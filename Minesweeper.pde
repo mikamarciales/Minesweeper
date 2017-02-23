@@ -26,12 +26,13 @@ void setup ()
 }
 public void setBombs()
 {
-    while(bombs.size() < 10)
+    while(bombs.size() < 20)
     {
         int row = (int)(Math.random()*NUM_ROWS);
         int col = (int)(Math.random()*NUM_COLS);        
+        if(!bombs.contains(buttons[row][col]))
+            bombs.add(buttons[row][col]);
     }
-    if(bombs.contains(buttons))
 }
 
 public void draw()
@@ -93,8 +94,8 @@ public class MSButton
     {    
         if (marked)
             fill(0);
-        // else if( clicked && bombs.contains(this) ) 
-        //     fill(255,0,0);
+        else if( clicked && bombs.contains(this) ) 
+            fill(255,0,0);
         else if(clicked)
             fill( 200 );
         else 
@@ -110,8 +111,9 @@ public class MSButton
     }
     public boolean isValid(int r, int c)
     {
-        //your code here
-        return false;
+        if(r >= 0 && r <= NUM_ROWS && c >= 0 && c <= NUM_COLS)
+            return true;
+            return false;
     }
     public int countBombs(int row, int col)
     {
