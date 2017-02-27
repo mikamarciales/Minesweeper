@@ -118,7 +118,14 @@ public class MSButton
     public int countBombs(int row, int col)
     {
         int numBombs = 0;
-        //your code here
+        if(isValid(r,c-1))
+            numBombs++;
+        if(isValid(r,c+1))
+            numBombs++;
+        if(isValid(r-1,c))
+            numBombs++;  
+        if(isValid(r+1,c))
+            numBombs++;   
         return numBombs;
     }
 }
