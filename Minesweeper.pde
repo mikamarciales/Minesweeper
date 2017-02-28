@@ -87,7 +87,26 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;
-        //your code here
+        if(keyPressed == true)
+        {
+            marked = !marked;
+            if(marked == false)
+            {
+                clicked = false;
+            }
+        }
+        else if(bombs.contains(this))
+        {
+            displayLosingMessage();
+        }
+        else if(countBombs(r,c) > 0)
+        {
+            setLabel("") + countBombs(r,c);
+        }
+        //else
+        //{
+
+        //}
     }
 
     public void draw () 
@@ -125,6 +144,14 @@ public class MSButton
         if(isValid(r-1,c))
             numBombs++;  
         if(isValid(r+1,c))
+            numBombs++;   
+        if(isValid(r+1,c+1))
+            numBombs++;   
+        if(isValid(r+1,c-1))
+            numBombs++;   
+        if(isValid(r-1,c+1))
+            numBombs++;   
+        if(isValid(r-1,c-1))
             numBombs++;   
         return numBombs;
     }
