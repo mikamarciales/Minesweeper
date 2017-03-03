@@ -26,7 +26,7 @@ void setup ()
 }
 public void setBombs()
 {
-    while(bombs.size() < 1)
+    while(bombs.size() < 10)
     {
         int row = (int)(Math.random()*NUM_ROWS);
         int col = (int)(Math.random()*NUM_COLS);        
@@ -43,11 +43,11 @@ public void draw()
 }
 public boolean isWon()
 {
-    for (int r=0; r<NUM_ROWS; r++)
+    for(int r = 0; r < NUM_ROWS; r++)
     {
-    for (int c=0; c<NUM_COLS; c++)
+    for(int c = 0; c < NUM_COLS; c++)
     {
-      if (buttons[r][c].isClicked() && !bombs.contains(buttons[r][c]))
+      if(!buttons[r][c].isClicked() == true && !bombs.contains(buttons[r][c]))
       {
         return false;
       }
@@ -57,13 +57,34 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+    for(int r = 0; r < NUM_ROWS; r++)
+    {
+        for(int c = 0; c < NUM_COLS; c++)
+        {
+            if(!buttons[r][c].isClicked() && bombs.contains(buttons[r][c]))
+            {
+                buttons[r][c].marked = false;
+                buttons[r][c].clicked = true;
+                buttons[0][0].setLabel("L");
+                buttons[0][1].setLabel("o");
+                buttons[0][2].setLabel("s");
+                buttons[0][3].setLabel("e");
+                buttons[0][4].setLabel("r");
+            }
+        }
+    }
 }
 public void displayWinningMessage()
 {
-    fill(0);
-    textSize(100);
-    text("lol", 200, 200);
+    buttons[0][0].setLabel("C");
+    buttons[0][1].setLabel("o");
+    buttons[0][2].setLabel("n");
+    buttons[0][3].setLabel("g");
+    buttons[0][4].setLabel("r");
+    buttons[0][5].setLabel("a");
+    buttons[0][6].setLabel("t");
+    buttons[0][7].setLabel("s");
+    buttons[0][8].setLabel("!");
 }
 
 public class MSButton
