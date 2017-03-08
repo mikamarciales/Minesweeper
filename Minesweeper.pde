@@ -161,11 +161,11 @@ public class MSButton
     {    
         stroke(255);
         if (marked)
-            fill(61, 69, 81);
+            fill(34, 39, 45);
         else if( clicked && bombs.contains(this) ) 
             fill(94, 22, 16);
         else if(clicked)
-            fill(89, 101, 119);
+            fill(72, 82, 96);
         else 
             fill(112, 127, 150);
 
