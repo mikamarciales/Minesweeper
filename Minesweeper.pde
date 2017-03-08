@@ -26,7 +26,7 @@ void setup ()
 }
 public void setBombs()
 {
-    while(bombs.size() < 10)
+    while(bombs.size() < 50)
     {
         int row = (int)(Math.random()*NUM_ROWS);
         int col = (int)(Math.random()*NUM_COLS);        
@@ -70,6 +70,7 @@ public void displayLosingMessage()
                 buttons[0][2].setLabel("s");
                 buttons[0][3].setLabel("e");
                 buttons[0][4].setLabel("r");
+                buttons[0][5].setLabel("!");
             }
         }
     }
@@ -158,17 +159,18 @@ public class MSButton
 
     public void draw () 
     {    
+        stroke(255);
         if (marked)
-            fill(0);
+            fill(61, 69, 81);
         else if( clicked && bombs.contains(this) ) 
-            fill(255,0,0);
+            fill(94, 22, 16);
         else if(clicked)
-            fill( 200 );
+            fill(89, 101, 119);
         else 
-            fill( 100 );
+            fill(112, 127, 150);
 
         rect(x, y, width, height);
-        fill(0);
+        fill(255);
         text(label,x+width/2,y+height/2);
     }
     public void setLabel(String newLabel)
